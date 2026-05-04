@@ -107,15 +107,17 @@ api.synetik.io    future API gateway
 DNS records after Render gives the target:
 
 ```text
-www  CNAME  RENDER_TARGET
-@    CNAME  RENDER_APEX_TARGET
+www  CNAME  synetik-io.onrender.com
+@    CNAME  synetik-io.onrender.com
 ```
 
-If Render gives an A record for apex, use:
+Cloudflare supports CNAME records at the root domain through CNAME flattening, so the `@` CNAME is the preferred setup for this project.
+
+If CNAME at root is unavailable in a different DNS provider, use:
 
 ```text
-@    A      RENDER_IP
-www  CNAME  RENDER_TARGET
+@    A      216.24.57.1
+www  CNAME  synetik-io.onrender.com
 ```
 
 Cloudflare settings:
@@ -125,8 +127,10 @@ SSL/TLS: Full
 Always Use HTTPS: On
 DNSSEC: On
 Domain Lock: On
-Proxy: On, unless Render custom-domain verification asks for DNS-only temporarily
+Proxy: DNS only during Render verification
 ```
+
+After Render verifies the domain and issues certificates, keep DNS-only if you want the simplest, Render-managed path. Only enable Cloudflare proxy later if you deliberately want Cloudflare caching/WAF rules and have retested HTTPS, redirects and form POSTs.
 
 ## Production environment
 
