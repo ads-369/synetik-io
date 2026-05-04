@@ -1,0 +1,14 @@
+{
+  "name": "synetik-io-private-operating-system",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Synetik.IO public site with lead capture and first-party analytics.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

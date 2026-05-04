@@ -1,0 +1,13 @@
+data/
+*.log
+*.err
+node_modules/
+.env
+.DS_Store
+
+# Internal source material copied into the workspace.
+*.pdf
+*.xlsx
+file_*.png
+xlsx-extract/
+tools/
